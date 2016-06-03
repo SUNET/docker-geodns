@@ -1,9 +1,12 @@
+NAME=geodns
+VERSION=latest
+
 all: build push
 update:
-	docker build -t geodns .
-	docker tag -f geodns docker.sunet.se/geodns
+	docker build -t $(NAME):$(VERSION) .
+	docker tag -f $(NAME):$(VERSION) docker.sunet.se/$(NAME):$(VERSION)
 build:
-	docker build --no-cache=true -t geodns .
-	docker tag -f geodns docker.sunet.se/geodns
+	docker build --no-cache=true -t $(NAME):$(VERSION) .
+	docker tag -f $(NAME):$(VERSION) docker.sunet.se/$(NAME):$(VERSION)
 push:
-	docker push docker.sunet.se/geodns
+	docker push docker.sunet.se/$(NAME):$(VERSION)
